@@ -1,0 +1,28 @@
+{
+  "name": "dream-team-cms",
+  "version": "1.0.0",
+  "description": "built a content management system (CMS) for a company's employee database",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kashane1/dream-team-cms.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kashane1/dream-team-cms/issues"
+  },
+  "homepage": "https://github.com/kashane1/dream-team-cms#readme",
+  "dependencies": {
+    "bluebird": "^3.7.2",
+    "inquirer": "^8.2.1",
+    "mysql2": "^2.3.3"
+  }
+}
