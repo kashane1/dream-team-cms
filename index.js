@@ -19,6 +19,7 @@ async function init(){
   }
 }
 
+
 function questions() {
   inquirer
     .prompt([
@@ -52,6 +53,7 @@ function questions() {
 
       } else if (answer.choice === 'update an employee role') {
         update.update_employee();
+
       } else {
         continueQs = false;
         console.log('Thanks for running the Dream Team CMS!');
