@@ -23,6 +23,7 @@
   "dependencies": {
     "bluebird": "^3.7.2",
     "inquirer": "^8.2.1",
+    "inquirer-loop": "^0.3.0",
     "mysql2": "^2.3.3"
   }
 }

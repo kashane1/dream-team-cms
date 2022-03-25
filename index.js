@@ -1,65 +1,78 @@
 const inquirer = require("inquirer");
 const view = require('./lib/view_db.js');
 const add = require('./lib/add_db.js');
-const update = require('./lib/update_db.js')
+const update = require('./lib/update_db.js');
+const sort = require('./lib/sort_db.js');
+inquirer.registerPrompt("loop", require("inquirer-loop")(inquirer));
 
-
-// from the readme: You might want to use a separate file that contains functions for performing specific 
-// SQL queries you'll need to use. A constructor function or class could be helpful for organizing these.
-
-// WHEN I start the application
-// THEN I am presented with the following options: view all departments, view all roles, view all employees, add a department, add a role, add an employee, and update an employee role
-
-// writing it out straight for now, but will need to make it asyncronus to call multiple times
 let continueQs = true;
-
-async function init(){
+async function runAgain() {
   if (continueQs){
     questions();
   }
 }
 
-
-function questions() {
-  inquirer
+async function questions() {
+  return inquirer
     .prompt([
       {
         name: 'choice',
         type: 'list',
+        loop: true,
         message: 'What would you like to do?',
-        choices: ['view all departments', 'view all roles', 'view all employees', 'add a department', 'add a role', 'add an employee', 'update an employee role', 'End Program', new inquirer.Separator()],
-        default: 'view all departments',
+        choices: ['View all departments', 'View all roles', 'View all employees', 'Add a department', 'Add a role', 'Add an employee', "Update an employee's role", "Update an employee's manager", 'End Program'],
+        default: 'View all departments',
       },
     ])
-    .then((answer) => {
-      if (answer.choice === 'view all departments') {
+    .then(async function(data) {
+      if (data.choice === 'View all departments') {
         // imported view from another file that has all the queries
-        view.all_departments();
-        
-      } else if (answer.choice === 'view all roles') {
-        view.all_roles();
+        await view.all_departments();
+        runAgain();
 
-      } else if (answer.choice === 'view all employees') {
-        view.all_employees();
+      } else if (data.choice === 'View all roles') {
+        await view.all_roles();
+        runAgain();
 
-      } else if (answer.choice === 'add a department') {
-        add.add_department();
+      } else if (data.choice === 'View all employees') {
+        await view.all_employees();
+        runAgain();
 
-      } else if (answer.choice === 'add a role') {
-        add.add_role();
+      } else if (data.choice === 'Add a department') {
+        await add.add_department();
+        runAgain();
 
-      } else if (answer.choice === 'add an employee') {
-        add.add_employee();
+      } else if (data.choice === 'Add a role') {
+        await add.add_role();
+        runAgain();
 
-      } else if (answer.choice === 'update an employee role') {
-        update.update_employee();
+      } else if (data.choice === 'Add an employee') {
+        await add.add_employee();
+        runAgain();
+
+      } else if (data.choice === "Update an employee's role") {
+        await update.employee_role();
+        runAgain();
+
+      } else if (data.choice === "Update an employee's manager") {
+        await update.employee_manager();
+        runAgain();
+
+      } else if (data.choice === "View employees by manager") {
+        await sort.by_manager();
+        runAgain();
+
+      } else if (data.choice === "View employees by department") {
+        await sort.by_department();
+        runAgain();
 
       } else {
         continueQs = false;
-        console.log('Thanks for running the Dream Team CMS!');
+        return console.log('Thanks for using The Dream Team CMS!');
       }
     })
+    // .then(runAgain())
     .catch((err) => console.log(err))
 };
 
-module.exports = init();
+questions();
