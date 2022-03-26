@@ -1,7 +1,7 @@
 # dream-team-cms
 built a content management system (CMS) for a company's employee database
 
-[video link](https://)
+[video link](https://drive.google.com/file/d/1gY1wTyJuAjEgDT5upiOBTGmjffmMZglg/view?usp=sharing)
 
 This link is a  walkthrough video demonstrating the functionality of the application.
 
