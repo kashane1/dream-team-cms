@@ -1,12 +1,21 @@
 # dream-team-cms
 built a content management system (CMS) for a company's employee database
 
----
-adding my own notes here, initial ideas, where to start etc...
+[video link](https://)
+
+This link is a  walkthrough video demonstrating the functionality of the application.
 
 ---
-1. look into OOP mini project as well ass team-work-dream-work HW assignment
+## Requirements
+1. The user is able able to view and manage the departments, roles, and employees in their company so that they can organize and plan their business.
+2. 
+3. 
+4. 
 
+---
+
+## Process
+I was able to work through this assignment with ounly a few road blocks. I thought I was going to have to build my own license.js file and then export it. Afterwards I found the generateMarkdown.js and that made things a lot more straight forward. The starter code really helped me. It gives a great outline of what needs to get done so I don't get hung up on and pseudo code or outlining. 
 
 ---
 ---
