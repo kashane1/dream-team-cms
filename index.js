@@ -4,7 +4,6 @@ const add = require('./lib/add_db.js');
 const update = require('./lib/update_db.js');
 const sort = require('./lib/sort_db.js');
 const delete_db = require('./lib/delete_db.js');
-inquirer.registerPrompt("loop", require("inquirer-loop")(inquirer));
 
 let continueQs = true;
 async function runAgain() {
@@ -19,9 +18,8 @@ async function questions() {
       {
         name: 'choice',
         type: 'list',
-        loop: true,
         message: 'What would you like to do?',
-        choices: ['View all departments', 'View all roles', 'View all employees', 'Add a department', 'Add a role', 'Add an employee', "Update an employee's role", "Update an employee's manager", 'Delete a department', 'Delete a role', 'Delete an employee', 'End Program'],
+        choices: ['View all departments', 'View all roles', 'View all employees', 'Add a department', 'Add a role', 'Add an employee', "Update an employee's role", "Update an employee's manager", "View employees by manager", 'Delete a department', 'Delete a role', 'Delete an employee', 'End Program'],
         default: 'View all departments',
       },
     ])
@@ -63,10 +61,6 @@ async function questions() {
         await sort.by_manager();
         runAgain();
 
-      } else if (data.choice === "View employees by department") {
-        await sort.by_department();
-        runAgain();
-
       } else if (data.choice === "Delete a department") {
         await delete_db.department();
         runAgain();
@@ -84,7 +78,6 @@ async function questions() {
         return console.log('Thanks for using The Dream Team CMS!');
       }
     })
-    // .then(runAgain())
     .catch((err) => console.log(err))
 };
 
